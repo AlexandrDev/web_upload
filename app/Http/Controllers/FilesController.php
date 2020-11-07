@@ -52,18 +52,23 @@ class FilesController extends Controller
     }
 
     public function list() {
-        $items = [];
-        $files = array_diff(scandir(public_path() . self::$upload_dir), ['..', '.']);
+        if ($this->is_auth()) {
+            $items = [];
+            dd(public_path());
+            $files = array_diff(scandir(public_path() . self::$upload_dir), ['..', '.']);
 
-        foreach ($files as $file) {
-            $items[] = [
-                'link' => self::$upload_dir . '/' . $file,
-                'name' => $file,
-                'remove' => '/files/remove/' . $file,
-            ];
+            foreach ($files as $file) {
+                $items[] = [
+                    'link' => self::$upload_dir . '/' . $file,
+                    'name' => $file,
+                    'remove' => '/files/remove/' . $file,
+                ];
+            }
+
+            return view('files', ['items' => $items]);
         }
 
-        return $this->is_auth() ? view('files', ['items' => $items]) : redirect('/');
+        return redirect('/');
     }
 
     public function remove($name) {
