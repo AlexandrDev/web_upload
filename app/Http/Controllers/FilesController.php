@@ -40,7 +40,6 @@ class FilesController extends Controller
     public function list() {
         if ($this->is_auth()) {
             $items = [];
-            dd(public_path());
             $files = array_diff(scandir(public_path() . self::$upload_dir), ['..', '.']);
 
             foreach ($files as $file) {
