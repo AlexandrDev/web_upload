@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class FilesController extends Controller
 {
-    private static $upload_dir = '/upload';
+    private static $upload_dir = '/upload/';
     private static $passw_cookie = '^Cwvfo8ygoPCzCsQRIRj@Cb@UMHh8R*bhv8E@YJmoFJhaDBLCk';
 
     public function index() {
@@ -45,7 +45,7 @@ class FilesController extends Controller
 
             foreach ($files as $file) {
                 $items[] = [
-                    'link' => self::$upload_dir . '/' . $file,
+                    'link' => self::$upload_dir . $file,
                     'name' => $file,
                     'remove' => '/files/remove/' . $file,
                 ];
@@ -71,7 +71,7 @@ class FilesController extends Controller
     }
 
     public function remove($name) {
-        $path = public_path() . self::$upload_dir . '/' . $name;
+        $path = public_path() . self::$upload_dir . $name;
 
         if (file_exists($path)) unlink($path);
 
