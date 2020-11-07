@@ -8,32 +8,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    /*public $passw_cookie = '^Cwvfo8ygoPCzCsQRIRj@Cb@UMHh8R*bhv8E@YJmoFJhaDBLCk';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    public function check() {
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    }
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function setLogin() {
+        setcookie('auth', $this->passw_cookie, time() + 3600);
+
+        return true;
+    }*/
 }

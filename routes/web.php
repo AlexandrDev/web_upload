@@ -10,7 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'FilesController@index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/', 'FilesController@upload');
+
+Route::post('/login', 'FilesController@login');
+Route::get('/logout', 'FilesController@logout');
+
+Route::get('files', 'FilesController@list');
+Route::get('files/remove/{name}', 'FilesController@remove');

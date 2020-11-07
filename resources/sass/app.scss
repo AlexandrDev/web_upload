@@ -1,8 +1,17 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import "global";
 
-// Variables
-@import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+.files-list {
+    .list-group-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        background-color: #565656;
+
+        a:not(.btn) {
+            flex-grow: 1;
+            margin-right: 30px;
+        }
+    }
+}
